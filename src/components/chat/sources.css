@@ -1,0 +1,101 @@
+.sources {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.sources-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.sources-header h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.sources-header span {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.sources-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.source-card {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 1px solid
+    rgba(128, 128, 128, 0.25);
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  overflow: hidden;
+}
+
+.source-number {
+  width: 24px;
+  height: 24px;
+
+  flex: 0 0 24px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  font-size: 12px;
+}
+
+.source-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.source-content strong {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 13px;
+}
+
+.source-content span {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 11px;
+
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .source-card {
+    padding: 10px;
+  }
+}
