@@ -1,25 +1,33 @@
 {
-  "name": "frontend",
-  "private": true,
-  "version": "0.0.0",
+  "name": "perplexcity-api",
+  "version": "1.0.0",
+  "description": "Production level AI agent backend",
   "type": "module",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
-    
-    
+    "dev": "npx nodemon src/server.js",
+    "start": "node src/server.js"
   },
   "dependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "@google/genai": "^2.16.0",
+    "@google/generative-ai": "^0.24.1",
+    "@tavily/core": "^0.7.7",
+    "bcryptjs": "latest",
+    "cookie-parser": "latest",
+    "cors": "latest",
+    "dotenv": "^17.4.2",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "helmet": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "nodemailer": "^9.0.5",
+    "twilio": "^5.13.1",
+    "zod": "latest"
   },
   "devDependencies": {
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
-    "oxlint": "^1.75.0",
-    "vite": "^8.2.0"
-  }
+    "nodemon": "latest"
+  },
+  "keywords": []
 }

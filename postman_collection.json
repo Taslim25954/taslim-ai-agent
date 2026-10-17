@@ -1,0 +1,195 @@
+{
+  "info": {
+    "name": "PerplexCity API",
+    "_postman_id": "perplexcity-api",
+    "description": "Import to Postman to run registration, verification, login, AI, and chat flows.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "jwt", "value": "" },
+    { "key": "testEmail", "value": "test+1@example.com" },
+    { "key": "conversationId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"{{testEmail}}\",\n  \"password\": \"Password123!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","auth","register"]
+        }
+      }
+    },
+    {
+      "name": "Verify Email (token)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/verify/:token",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","auth","verify",":token"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{testEmail}}\",\n  \"password\": \"Password123!\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","auth","login"]
+        }
+      }
+    },
+    {
+      "name": "Get Me",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/users/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","users","me"]
+        }
+      }
+    },
+    {
+      "name": "Ask AI",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"Say hello in a creative way\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/ai/ask",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","ai","ask"]
+        }
+      }
+    },
+    {
+      "name": "Create Chat",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Support Chat\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats"]
+        }
+      }
+    },
+    {
+      "name": "Get Chats",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats"]
+        }
+      }
+    },
+    {
+      "name": "Get Chat",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats/{{conversationId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats","{{conversationId}}"]
+        }
+      }
+    },
+    {
+      "name": "Send Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"What is the weather today?\",\n  \"useAI\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats/{{conversationId}}/messages",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats","{{conversationId}}","messages"]
+        }
+      }
+    },
+    {
+      "name": "Rename Chat",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Chat Title\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats/{{conversationId}}/rename",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats","{{conversationId}}","rename"]
+        }
+      }
+    },
+    {
+      "name": "Delete Chat",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/chats/{{conversationId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","chats","{{conversationId}}"]
+        }
+      }
+    }
+  ]
+}
